@@ -1,4 +1,4 @@
-package com.example.tres_x_tres_project
+package com.acr.tres_x_tres_project
 
 import io.flutter.embedding.android.FlutterActivity
 

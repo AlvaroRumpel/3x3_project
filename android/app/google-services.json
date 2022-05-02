@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "770770908359",
+    "project_id": "tresx3-project",
+    "storage_bucket": "tresx3-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770770908359:android:d856d30b97081578ca3ae2",
+        "android_client_info": {
+          "package_name": "com.acr.tres_x_tres_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770770908359-kkmrihmsn84duv9qout5sb83h9qdsram.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIM_8wk6Ps9gh90ZlUOXMqahv6U84BCBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770770908359-kkmrihmsn84duv9qout5sb83h9qdsram.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
