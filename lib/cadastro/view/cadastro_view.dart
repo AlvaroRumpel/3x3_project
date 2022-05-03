@@ -39,6 +39,12 @@ class CadastroView extends StatelessWidget {
                     isBold: true,
                   ),
                   CustomTextfield(
+                    labelText: 'Usuário',
+                    controller: ct.userController,
+                    validador: ct.validator.userValidator,
+                    textErro: 'Usuário invalido',
+                  ),
+                  CustomTextfield(
                     controller: ct.loginController,
                     labelText: 'Email',
                     validador: ct.validator.emailValidator,
@@ -62,7 +68,7 @@ class CadastroView extends StatelessWidget {
                   ),
                   CustomButton(
                     function: () => ct.singUp,
-                    buttonText: 'Login',
+                    buttonText: 'Cadastrar',
                     maxWidth: true,
                     fontSize: 24,
                     height: 56,

@@ -30,7 +30,7 @@ class LoginController extends GetxController {
       UtilsWidgets.loadingDialog('Logando...');
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: loginController.text.trim(),
-        password: senhaController.text.trim(),
+        password: GetUtils.removeAllWhitespace(senhaController.text.trim()),
       );
       Get.back();
       Get.offAndToNamed('/home');

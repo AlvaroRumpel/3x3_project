@@ -1,10 +1,12 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:get/get.dart';
 
 class Validators {
-  late bool hasErroEmail, hasErroSenha;
+  late bool hasErroEmail, hasErroSenha, hasErroUser;
   Validators({
     this.hasErroEmail = false,
     this.hasErroSenha = false,
+    this.hasErroUser = false,
   });
 
   bool emailValidator(value) {
@@ -17,11 +19,21 @@ class Validators {
   }
 
   bool senhaValidator(value) {
-    if (value.length < 8 || value.length > 60) {
+    value = GetUtils.removeAllWhitespace(value);
+    if (!GetUtils.isLengthBetween(value, 8, 60)) {
       hasErroSenha = true;
       return false;
     }
     hasErroSenha = false;
+    return true;
+  }
+
+  bool userValidator(value) {
+    if (!GetUtils.isUsername(value)) {
+      hasErroUser = true;
+      return false;
+    }
+    hasErroUser = false;
     return true;
   }
 }

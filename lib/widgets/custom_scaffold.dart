@@ -8,10 +8,12 @@ class CustomScaffold extends StatelessWidget {
   Widget body;
   Widget? bottomNav;
   bool isSingUp;
+  Widget? floatingActionButton;
 
   CustomScaffold({
     Key? key,
     this.bottomNav,
+    this.floatingActionButton,
     this.isSingUp = false,
     required this.title,
     required this.body,
@@ -30,6 +32,7 @@ class CustomScaffold extends StatelessWidget {
           child: body,
         ),
       ),
+      floatingActionButton: floatingActionButton,
     );
   }
 }
