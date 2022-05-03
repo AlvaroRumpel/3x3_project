@@ -23,7 +23,7 @@ class CustomTextButton extends StatelessWidget {
       child: SizedBox(
         width: maxSize != null ? double.maxFinite : null,
         child: TextButton(
-          onPressed: () => function,
+          onPressed: function(),
           child: Text(
             buttonText,
             style: TextStyle(fontSize: fontSize),

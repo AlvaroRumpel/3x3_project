@@ -5,45 +5,47 @@ import 'package:get/get.dart';
 import 'package:tres_x_tres_project/utils/validators.dart';
 import 'package:tres_x_tres_project/utils/widgets.dart';
 
-class LoginController extends GetxController {
+class CadastroController extends GetxController {
   TextEditingController loginController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
+  TextEditingController confirmSenhaController = TextEditingController();
+
   Validators validator = Validators();
 
-  @override
-  void onClose() {
-    loginController.dispose();
-    senhaController.dispose();
-    super.onClose();
-  }
+  bool checkSenha = false;
 
-  Future singIn() async {
+  Future singUp() async {
     if (validator.hasErroEmail ||
         validator.hasErroSenha ||
+        !checkSenha ||
         loginController.text.isEmpty ||
-        senhaController.text.isEmpty) {
+        senhaController.text.isEmpty ||
+        confirmSenhaController.text.isEmpty) {
       UtilsWidgets.erroSnackbar('Preencha os campos corretamente',
           'Dados incompletos ou incorretos, verifique');
       return;
     }
     try {
-      UtilsWidgets.loadingDialog('Logando...');
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: loginController.text.trim(),
-        password: senhaController.text.trim(),
-      );
+      UtilsWidgets.loadingDialog('Criando conta...');
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: loginController.text.trim(),
+          password: senhaController.text.trim());
       Get.back();
-      Get.offAndToNamed('/home');
     } on FirebaseAuthException catch (e) {
       if (kDebugMode) {
         print(e);
       }
       Get.back();
-      UtilsWidgets.erroSnackbar('Erro no login', e.message);
+      UtilsWidgets.erroSnackbar('Erro no cadastro', e.message);
     }
   }
 
-  singUp() {
-    Get.toNamed('/singUp');
+  bool checkSenhas(value) {
+    if (senhaController.text == value) {
+      checkSenha = true;
+      return true;
+    }
+    checkSenha = false;
+    return false;
   }
 }

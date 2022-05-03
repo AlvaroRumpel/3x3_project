@@ -4,15 +4,18 @@ class CustomButton extends StatelessWidget {
   Function function;
   IconData? icon;
   String buttonText;
-  bool? maxSize;
+  bool maxWidth;
+  double height;
   double fontSize;
-
+  IconData? iconData;
   CustomButton({
     Key? key,
     required this.function,
     this.icon,
-    this.maxSize,
+    this.maxWidth = false,
+    this.height = 40,
     this.fontSize = 16,
+    this.iconData,
     required this.buttonText,
   }) : super(key: key);
 
@@ -21,14 +24,24 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
-        width: maxSize != null ? double.maxFinite : null,
-        child: ElevatedButton(
-          onPressed: function(),
-          child: Text(
-            buttonText,
-            style: TextStyle(fontSize: fontSize),
-          ),
-        ),
+        width: maxWidth ? double.maxFinite : null,
+        height: height,
+        child: icon != null
+            ? ElevatedButton.icon(
+                onPressed: function(),
+                label: Text(
+                  buttonText,
+                  style: TextStyle(fontSize: fontSize),
+                ),
+                icon: Icon(icon),
+              )
+            : ElevatedButton(
+                onPressed: function(),
+                child: Text(
+                  buttonText,
+                  style: TextStyle(fontSize: fontSize),
+                ),
+              ),
       ),
     );
   }

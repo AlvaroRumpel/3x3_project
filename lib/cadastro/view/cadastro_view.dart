@@ -1,22 +1,22 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tres_x_tres_project/login/controller/login_controller.dart';
+import 'package:tres_x_tres_project/cadastro/controller/cadastro_controller.dart';
 import 'package:tres_x_tres_project/widgets/custom_button.dart';
 import 'package:tres_x_tres_project/widgets/custom_container.dart';
 import 'package:tres_x_tres_project/widgets/custom_scaffold.dart';
 import 'package:tres_x_tres_project/widgets/custom_text.dart';
-import 'package:tres_x_tres_project/widgets/custom_text_button.dart';
 import 'package:tres_x_tres_project/widgets/custom_textfield.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({Key? key}) : super(key: key);
+class CadastroView extends StatelessWidget {
+  CadastroView({Key? key}) : super(key: key);
 
-  var ct = Get.put(LoginController());
+  var ct = Get.put(CadastroController());
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Login',
+      title: 'Cadastro',
+      isSingUp: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,9 +30,10 @@ class LoginView extends StatelessWidget {
             ),
             CustomContainer(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomText(
-                    text: 'Login',
+                    text: 'Cadastro',
                     fontSize: 48,
                     vertical: 16,
                     isBold: true,
@@ -51,22 +52,20 @@ class LoginView extends StatelessWidget {
                     textErro: 'A senha precisa ter mais de 8 caracteres',
                     action: TextInputAction.done,
                   ),
+                  CustomTextfield(
+                    controller: ct.confirmSenhaController,
+                    labelText: 'Confirmar senha',
+                    obscureText: true,
+                    validador: ct.checkSenhas,
+                    textErro: 'A senha não confere',
+                    action: TextInputAction.done,
+                  ),
                   CustomButton(
-                    function: () => ct.singIn,
+                    function: () => ct.singUp,
                     buttonText: 'Login',
                     maxWidth: true,
                     fontSize: 24,
                     height: 56,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomText(text: 'Não possui conta,'),
-                      CustomTextButton(
-                        function: () => ct.singUp,
-                        buttonText: 'cadastre-se aqui!',
-                      ),
-                    ],
                   ),
                 ],
               ),

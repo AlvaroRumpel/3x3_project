@@ -6,6 +6,7 @@ class CustomText extends StatelessWidget {
   Color color;
   String text;
   double fontSize;
+  bool isBold;
 
   CustomText({
     Key? key,
@@ -13,6 +14,7 @@ class CustomText extends StatelessWidget {
     this.horizontal = 0,
     this.color = const Color(0xffefefef),
     this.fontSize = 16,
+    this.isBold = false,
     required this.text,
   }) : super(key: key);
 
@@ -28,6 +30,7 @@ class CustomText extends StatelessWidget {
         style: TextStyle(
           color: color,
           fontSize: fontSize,
+          fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
         ),
       ),
     );
