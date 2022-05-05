@@ -23,4 +23,26 @@ class UtilsWidgets {
       backgroundColor: const Color(0xffff3333),
     );
   }
+  UtilsWidgets.sucessSnackbar(String title, String? description) {
+    Get.snackbar(
+      title,
+      description ?? 'informações escritas com sucesso',
+      colorText: const Color(0xffefefef),
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: const Color(0xff33ff33),
+    );
+  }
+  UtilsWidgets.defaultDialog(String title, Widget conteudo) {
+    Get.defaultDialog(
+      title: title,
+      content: conteudo,
+      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 32),
+      titlePadding: const EdgeInsets.symmetric(vertical: 32),
+      titleStyle: const TextStyle(
+        color: Color(0xffefefef),
+      ),
+      backgroundColor: const Color(0xff27201D),
+      radius: 10,
+    );
+  }
 }
